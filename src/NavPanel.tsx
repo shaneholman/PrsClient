@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 function NavPanel() {
   return (
-    <nav className="sidebar">
+    <nav className="bg-body-tertiary sidebar">
       <a>
         <svg className="bi me-2" width={16} height={16} fill="currentColor">
           <use xlinkHref="./node_modules/bootstrap-icons/bootstrap-icons.svg#plus-circle-fill" />
@@ -28,12 +29,12 @@ function NavPanel() {
           </a>
         </li>
         <li>
-          <a href="vendors-page.html">
+          <Link to="/vendors">
             <svg className="bi me-2" width={16} height={16} fill="currentColor">
               <use xlinkHref="./node_modules/bootstrap-icons/bootstrap-icons.svg#building" />
             </svg>
             Vendors
-          </a>
+          </Link>
         </li>
         <li>
           <a>

@@ -1,12 +1,9 @@
-
-
-
 function HomePage() {
   return (
     <>
-      <header className="container-fluid m-4 min-vh-100">
+      <div className="container-fluid m-4">
         <h2>Purchase Request System</h2>
-      </header>
+      </div>
       <hr />
 
       <section className="container-fluid m-4 min-vh-100">

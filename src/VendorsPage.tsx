@@ -1,8 +1,0 @@
-
-function VendorsPage(){
-    return(
-        <>
-        
-        </>
-    )
-}
