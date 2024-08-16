@@ -18,7 +18,7 @@ function VendorList() {
   }, []);
 
   return (
-    <section className="d-flex flex-wrap gap-4 ">
+    <section className="d-flex flex-wrap gap-4 bg-body-tertiary rounded p-3 ">
       {busy && (
         <div className="d-flex justify-content-center align-items-center w-100 vh-100">
           <div className="spinner-border" role="status">
@@ -37,7 +37,8 @@ function VendorList() {
           <small>{vendor.zipCode}</small>
           <small>{vendor.phone}</small>
           <small>{vendor.email}</small>
-          <Link to="/vendors/edit" className ="btn btn primary"></Link>
+          <Link to="/vendors/edit">edit</Link>
+          <Link to="/vendors/delete">delete</Link>
         </div>
       ))}
     </section>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Vendor } from "./vendor";
+import { Vendor } from "./Vendor";
 import { useForm } from "react-hook-form";
-import React from "react";
 
 function VendorForm() {
   const {
