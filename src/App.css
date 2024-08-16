@@ -38,21 +38,17 @@ body {
     padding-right: 4rem;
   }
   
-  .sidebar {
-    height: 100vh;
-    /* background-color: #efefef; */
-    padding: 20px;
-  }
+
   .brand {
     font-size: smaller;
   }
   
-  #menu {
+  /* #menu {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
+  } */
    #menu a {
     text-decoration: none;
   }
