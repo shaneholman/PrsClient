@@ -10,17 +10,17 @@ interface VendorCardProps {
 function VendorCard({ vendor, onRemove }: VendorCardProps) {
   return (
     <article className="card p-4 " key={vendor.id}>
-      <Link to={`/vendor/edit/${vendor.id}`}></Link>
-      <strong>Vendor Name :{vendor.name}</strong>
-      <small>Vendor Code :{vendor.code}</small>
-      <small>Address :{vendor.address}</small>
-      <small>City :{vendor.city}</small>
-      <small>State :{vendor.state}</small>
-      <small>ZipCode :{vendor.zipCode}</small>
-      <small>Phone :{vendor.phone}</small>
+      {/* <Link to={`/vendor/edit/${vendor.id}`}></Link> */}
+      <strong> {vendor.name}</strong>
+      <small className="bg-body-secondary rounded p-1">Vendor Code : {vendor.code}</small>
+      <small>Address : {vendor.address}</small>
+      <small>City : {vendor.city}</small>
+      <small>State : {vendor.state}</small>
+      <small>ZipCode : {vendor.zipCode}</small>
+      <small>Phone : {vendor.phone}</small>
       <small>Email :{vendor.email}</small>
       <div className="d-flex gap-2">
-        <Link className="small btn btn-outline-secondary" to="/vendors/edit">
+        <Link className="small btn btn-outline-secondary" to={`/vendors/edit/${vendor.id}`}>
           edit
         </Link>
 
