@@ -5,7 +5,7 @@ function VendorCreatePage() {
   return (
     <>
       <div className="d-flex justify-content-between">
-        <h4>Create Vendor</h4>
+        <h4>New Vendor</h4>
       </div>
       <hr />
       <VendorForm />

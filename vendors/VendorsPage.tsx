@@ -1,4 +1,4 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
+
 import VendorList from "../Vendors/VendorList";
 import { Link } from "react-router-dom";
 

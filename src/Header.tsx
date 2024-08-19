@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="container-fluid d-flex justify-content-between bg-body-tertiary">
       <span>
-        <NavLink to="/HomePage">
+        <Link to="/">
           <svg id="logo" width={50} height={39} viewBox="0 0 50 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z" className="ccompli1" fill="#007AFF" />
             <path
@@ -14,7 +14,7 @@ function Header() {
               fill="#312ECB"
             />
           </svg>
-        </NavLink>
+        </Link>
         <span className="brand">Purchase Request System</span>
       </span>
       <a className="btn btn-primary">
