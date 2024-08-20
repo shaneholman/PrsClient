@@ -1,21 +1,21 @@
 import { BASE_URL, checkStatus, delay, parseJSON } from "../utility/fetchUtilities";
-import { Vendor } from "./Vendor";
+import { Product } from "./Product";
 
-let url = `${BASE_URL}/vendors`;
+let url = `${BASE_URL}/products`;
 
-export const vendorAPI = {
-  list(): Promise<Vendor[]> {
+export const productAPI = {
+  list(): Promise<Product[]> {
     return fetch(`${url}?_sort=name&_order=asc`).then(delay(600)).then(checkStatus).then(parseJSON);
   },
 
-  find(id: number): Promise<Vendor> {
+  find(id: number): Promise<Product> {
     return fetch(`${url}/${id}`).then(checkStatus).then(parseJSON);
   },
 
-  post(vendor: Vendor) {
+  post(product: Product) {
     return fetch(`${url}`, {
       method: "POST",
-      body: JSON.stringify(vendor),
+      body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
       },
@@ -24,10 +24,10 @@ export const vendorAPI = {
       .then(parseJSON);
   },
 
-  put(vendor: Vendor) {
-    return fetch(`${url}/${vendor.id}`, {
+  put(product: Product) {
+    return fetch(`${url}/${product.id}`, {
       method: "PUT",
-      body: JSON.stringify(vendor),
+      body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
       },

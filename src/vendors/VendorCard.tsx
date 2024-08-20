@@ -16,7 +16,7 @@ function VendorCard({ vendor, onRemove }: VendorCardProps) {
       <small>Address : {vendor.address}</small>
       <small>City : {vendor.city}</small>
       <small>State : {vendor.state}</small>
-      <small>ZipCode : {vendor.zipCode}</small>
+      <small> {vendor.zipCode}</small>
       <small>Phone : {vendor.phone}</small>
       <small>Email :{vendor.email}</small>
       <div className="d-flex gap-2">
