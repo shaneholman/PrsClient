@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import toast from "react-hot-toast";
 import { Product } from "./Product";
 import { productAPI } from "./ProductAPI";
 import ProductCard from "./ProductCard";
-import "bootstrap/dist/css/bootstrap.min.css";
-import toast from "react-hot-toast";
 
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,7 +28,7 @@ function ProductList() {
     if (confirm("Are you sure you want to delete this Product?")) {
       if (product.id) {
         await productAPI.delete(product.id);
-        let updatedProducts = products.filter((v) => v.id !== product.id);
+        let updatedProducts = products.filter((p) => p.id !== product.id);
         setProducts(updatedProducts);
         toast.success("Successfully deleted.");
       }

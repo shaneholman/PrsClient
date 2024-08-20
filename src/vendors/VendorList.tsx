@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Vendor } from "./Vendor";
 import { vendorAPI } from "./VendorAPI";
 import VendorCard from "./VendorCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import toast from "react-hot-toast";
+import { Vendor } from "./Vendor";
 
 function VendorList() {
   const [vendors, setVendors] = useState<Vendor[]>([]);

@@ -9,6 +9,9 @@ import { Toaster } from "react-hot-toast";
 import VendorsPage from "./vendors/VendorsPage";
 import VendorCreatePage from "./vendors/VendorCreatePage";
 import VendorEditPage from "./vendors/VendorEditPage";
+import ProductsPage from "./products/ProductsPage";
+import ProductCreatePage from "./products/ProductCreatePage";
+import ProductEditPage from "./products/ProductEditPage";
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
                 <Route path="vendors" element={<VendorsPage />} />
                 <Route path="vendors/create" element={<VendorCreatePage />} />
                 <Route path="vendors/edit/:id" element={<VendorEditPage />} />
+                <Route path="products" element={<ProductsPage />} />
+                <Route path="products/create" element={<ProductCreatePage />} />
+                <Route path="products/edit/:id" element={<ProductEditPage />} />
               </Routes>
             </section>
           </main>

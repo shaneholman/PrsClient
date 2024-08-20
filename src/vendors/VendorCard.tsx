@@ -18,7 +18,7 @@ function VendorCard({ vendor, onRemove }: VendorCardProps) {
       <small>State : {vendor.state}</small>
       <small> {vendor.zipCode}</small>
       <small>Phone : {vendor.phone}</small>
-      <small>Email :{vendor.email}</small>
+      <small>Email : {vendor.email}</small>
       <div className="d-flex gap-2">
         <Link className="small btn btn-outline-secondary" to={`/vendors/edit/${vendor.id}`}>
           edit

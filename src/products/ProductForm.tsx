@@ -3,11 +3,15 @@ import { Product } from "./Product";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { productAPI } from "./ProductAPI";
+import { useState } from "react";
+import { Vendor } from "../Vendors/Vendor";
+import { vendorAPI } from "../Vendors/VendorAPI";
 
 function ProductForm() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const productId = Number(id);
+  const [vendors, setVendor] = useState<Vendor[]>([]);
 
   const {
     register,
@@ -15,8 +19,12 @@ function ProductForm() {
     formState: { errors },
   } = useForm<Product>({
     defaultValues: async () => {
+      let vendorsData = await vendorAPI.list();
+      setVendor(vendorsData);
+
       if (!productId) {
-        return Promise.resolve(new Product());
+        let newProduct = new Product({ vendorId: vendors });
+        return Promise.resolve(newProduct);
       } else {
         return await productAPI.find(productId);
       }
@@ -60,157 +68,66 @@ function ProductForm() {
         </div>
 
         <div className="col-md-6">
-          <label className="form-label" htmlFor="code">
-            <h5>Code :</h5>
+          <label className="form-label" htmlFor="part number">
+            <h5>Part Number :</h5>
           </label>
           <input
-            id="code"
-            {...register("code", {
-              required: "Code is required",
+            id="part number"
+            {...register("partNbr", {
+              required: "Part Number is required",
             })}
-            className={`form-control ${errors.code && "is-invalid"} `}
+            className={`form-control ${errors.partNbr && "is-invalid"} `}
             type="text"
           />
-          <div className="invalid-feedback">{errors?.code?.message}</div>
+          <div className="invalid-feedback">{errors?.partNbr?.message}</div>
         </div>
 
         <div className="col-12">
-          <label className="form-label" htmlFor="address">
-            <h5>Address :</h5>
+          <label className="form-label" htmlFor="unit">
+            <h5>Unit :</h5>
           </label>
           <input
-            id="address"
-            {...register("address", {
-              required: "Address is required",
+            id="unit"
+            {...register("unit", {
+              required: "Unit is required",
             })}
-            className={`form-control ${errors.address && "is-invalid"} `}
+            className={`form-control ${errors.unit && "is-invalid"} `}
             type="text"
           />
-          <div className="invalid-feedback">{errors?.address?.message}</div>
+          <div className="invalid-feedback">{errors?.unit?.message}</div>
         </div>
         <div className="col-md-5">
-          <label className="form-label" htmlFor="city">
-            <h5>City :</h5>
+          <label className="form-label" htmlFor="price">
+            <h5>Price :</h5>
           </label>
           <input
-            id="city"
-            {...register("city", {
-              required: "City is required",
+            id="price"
+            {...register("price", {
+              required: "Price is required",
             })}
-            className={`form-control ${errors.city && "is-invalid"} `}
+            className={`form-control ${errors.price && "is-invalid"} `}
             type="text"
           />
-          <div className="invalid-feedback">{errors?.city?.message}</div>
+          <div className="invalid-feedback">{errors?.price?.message}</div>
         </div>
 
         <div className="col-md-3">
-          <label className="form-label" htmlFor="state">
-            <h5>State :</h5>
+          <label className="form-label" htmlFor="vendor">
+            <h5>Vendor :</h5>
           </label>
           <select
-            id="state"
-            {...register("state", {
-              required: "State is required",
-            })}
-            className={`form-select ${errors.state && "is-invalid"} `}
+            {...register("vendorId", { required: "Vendor is required" })}
+            className={`form-select ${errors.vendorId && "is-invalid"}`}
+            id="vendor"
           >
-            <option selected></option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
+            <option value="">Select...</option>
+            {vendors.map((vendor) => (
+              <option key={vendor.id} value={vendor.id}>
+                {vendor.name}
+              </option>
+            ))}
           </select>
-          <div className="invalid-feedback">{errors?.state?.message}</div>
-        </div>
-        <div className="col-md-3">
-          <label className="form-label" htmlFor="zipCode">
-            <h5>ZipCode :</h5>
-          </label>
-          <input
-            id="zipCode"
-            {...register("zipCode", {
-              required: "ZipCode is required",
-            })}
-            className={`form-control ${errors.zipCode && "is-invalid"} `}
-            type="text"
-          />
-          <div className="invalid-feedback">{errors?.zipCode?.message}</div>
-        </div>
-
-        <div className="col-md-6">
-          <label className="form-label" htmlFor="phone">
-            <h5>Phone :</h5>
-          </label>
-          <input
-            id="phone"
-            {...register("phone", {
-              required: "Phone number is required",
-            })}
-            className={`form-control ${errors.phone && "is-invalid"} `}
-            type="text"
-          />
-          <div className="invalid-feedback">{errors?.phone?.message}</div>
-        </div>
-
-        <div className="col-md-6">
-          <label className="form-label" htmlFor="email">
-            <h5>Email :</h5>
-          </label>
-          <input
-            id="email"
-            {...register("email", {
-              required: "Email is required",
-            })}
-            className={`form-control ${errors.email && "is-invalid"} `}
-            type="text"
-          />
-          <div className="invalid-feedback">{errors?.email?.message}</div>
+          <div className="invalid-feedback">{errors?.vendorId?.message}</div>
         </div>
 
         <div className="d-flex gap-2">

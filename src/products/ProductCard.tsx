@@ -12,13 +12,14 @@ function ProductCard({ product, onRemove }: ProductCardProps) {
     <article className="card p-4 " key={product.id}>
       {/* <Link to={`/product/edit/${product.id}`}></Link> */}
       <strong> {product.name}</strong>
-      <small className="bg-body-secondary rounded p-1">Product Code : {product.code}</small>
-      <small>Address : {product.address}</small>
-      <small>City : {product.city}</small>
-      <small>State : {product.state}</small>
-      <small> {product.zipCode}</small>
-      <small>Phone : {product.phone}</small>
-      <small>Email :{product.email}</small>
+      <small className="bg-body-secondary rounded p-1">Product Code : {product.id}</small>
+      <small>Part Number : {product.partNbr}</small>
+      <small>price : ${product.price}</small>
+      {/* <small>
+        Price : {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(product.price)}
+      </small> */}
+      <small>Unit : {product.unit}</small>
+      <small>Vendor ID : {product.vendorId}</small>
       <div className="d-flex gap-2">
         <Link className="small btn btn-outline-secondary" to={`/products/edit/${product.id}`}>
           edit
