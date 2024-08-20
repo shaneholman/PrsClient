@@ -11,7 +11,8 @@ function VendorCard({ vendor, onRemove }: VendorCardProps) {
   return (
     <article className="card p-4 " key={vendor.id}>
       {/* <Link to={`/vendor/edit/${vendor.id}`}></Link> */}
-      <strong> {vendor.name}</strong>
+      <strong className=""> {vendor.name}</strong>
+    
       <small className="bg-body-secondary rounded p-1">Vendor Code : {vendor.code}</small>
       <small>Address : {vendor.address}</small>
       <small>City : {vendor.city}</small>
