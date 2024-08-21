@@ -3,11 +3,7 @@ import toast from "react-hot-toast";
 import { Link, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import { Request } from "./Request";
 import { requestAPI } from "./RequestAPI";
-import CreditTable from "../credits/CreditTable";
-import { creditAPI } from "../credits/CreditAPI";
-import { Credit } from "../credits/Credit";
-import CreditCreatePage from "../credits/CreditCreatePage";
-import CreditEditPage from "../credits/CreditEditPage";
+
 
 function RequestDetailPage() {
   const { requestId: requestIdAsString } = useParams<{

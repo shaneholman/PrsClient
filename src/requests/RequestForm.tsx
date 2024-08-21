@@ -119,7 +119,7 @@ function RequestForm() {
             <h5>User : </h5>
           </label>
           <select
-            {...register("userId", { required: "User request is required" })}
+            {...register("userId", { required: "User request is required" , valueAsNumber: true })}
             className={`form-select ${errors.userId && "is-invalid"}`}
             id="user"
           >
