@@ -3,13 +3,9 @@ import { NavLink } from "react-router-dom";
 
 function NavPanel() {
   return (
-    <nav className="bg-body-tertiary min-vh-100 p-4 ">
-      <svg className="bi me-2" width={16} height={16} fill="currentColor">
-        <use xlinkHref="./node_modules/bootstrap-icons/bootstrap-icons.svg#plus-circle-fill" />
-      </svg>
-      Create New
+    <nav className="bg-body-tertiary min-vh-100 p-3 ">
       <ul className="nav nav-pills">
-        <li className="nav-items text-secondary m-3">Purchase</li>
+        <li className="nav-items text-secondary m-2">Purchase</li>
         <li className="nav-item">
           <NavLink className="nav-link" to="/requests">
             <svg className="bi me-2" width={16} height={16} fill="currentColor">
