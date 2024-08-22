@@ -9,16 +9,16 @@ interface RequestTableRowProps {
 
 function RequestTableRow({ request, onRemove }: RequestTableRowProps) {
   return (
-    <tr className="">
+    <tr>
       <td>
         <Link to={`/requests/detail/${request.id}`}>{request.id}</Link>
       </td>
 
       <td>
         {request.description} <br />
-        {request.justification}
+        <span className="text-secondary">{request.justification}</span>
       </td>
-      <td className=" badge text-bg-primary">{request.status}</td>
+      <td > <span className="badge text-bg-primary mt-2">{request.status} </span></td>
       <td> ${request.total}</td>
       <td>
         {request.user?.firstname} {request.user?.lastname}

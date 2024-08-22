@@ -18,6 +18,7 @@ import UsersPage from "./users/UsersPage";
 import RequestsPage from "./requests/RequestsPage";
 import RequestCreatePage from "./requests/RequestCreatePage";
 import RequestEditPage from "./requests/RequestEditPage";
+import RequestDetailPage from "./requests/RequestDetailPage";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
                 <Route path="users/create" element={<UserCreatePage />} />
                 <Route path="users/edit/:id" element={<UserEditPage />} />
                 <Route path="requests" element={<RequestsPage />} />
+                <Route path="requests/detail/:requestId" element={<RequestDetailPage />} />
                 <Route path="requests/create" element={<RequestCreatePage />} />
                 <Route path="requests/edit/:id" element={<RequestEditPage />} />
               </Routes>

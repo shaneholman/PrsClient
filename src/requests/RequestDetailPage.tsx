@@ -3,7 +3,9 @@ import toast from "react-hot-toast";
 import { Link, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import { Request } from "./Request";
 import { requestAPI } from "./RequestAPI";
-
+import RequestTable from "./RequestTable";
+import RequestCreatePage from "./RequestCreatePage";
+import RequestEditPage from "./RequestEditPage";
 
 function RequestDetailPage() {
   const { requestId: requestIdAsString } = useParams<{
@@ -18,8 +20,8 @@ function RequestDetailPage() {
     try {
       if (!requestId) return;
       setBusy(true);
-      const data = await requestAPI.findWithDetails(requestId);
-      setRequest(data);
+      let foundRequest = await requestAPI.find(requestId);
+      setRequest(foundRequest);
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -31,29 +33,34 @@ function RequestDetailPage() {
     loadRequest();
   }, [searchParams.get("lastUpdated")]);
 
-  async function removeCredit(credit: Credit) {
-    if (confirm("Are you sure you want to delete this Request?")) {
-      if (credit.id) {
-        await creditAPI.delete(credit.id);
-        toast.success("Successfully deleted.");
-        let updatedCredits = request?.credits?.filter((c) => c.id !== credit.id);
-        if (request) {
-          setRequest({ ...request, credits: updatedCredits } as Request);
-        }
-      }
-    }
-  }
+  // async function removeRequest(request: Request) {
+  //   if (confirm("Are you sure you want to delete this Request?")) {
+  //     if (request.id) {
+  //       await requestAPI.delete(request.id);
+  //       toast.success("Successfully deleted.");
+  //       let updatedRequests = request?.requestId?.filter((c) => c.id !== request.id);
+  //       if (request) {
+  //         setRequest({ ...request, requests: updatedRequests } as Request);
+  //       }
+  //     }
+  //   }
+  // }
 
   if (!request) return null;
 
   return (
     <>
-      <nav className="d-flex justify-content-between pe-2">
+      <div className="d-flex justify-content-between ">
         <h4>Request</h4>
-        <Link to={`/requests/edit/${request.id}`} className="btn btn-outline-primary">
-          edit request
-        </Link>
-      </nav>
+        <div className=" d-flex gap-3">
+          <Link to={`/requests/edit/${request.id}`} className="btn btn-outline-primary">
+            + Submit Request
+          </Link>
+          <Link to={`/requests/edit/${request.id}`} className="btn btn-outline-secondary">
+            + Edit Request
+          </Link>
+        </div>
+      </div>
       <hr />
       <>
         {busy && (
@@ -65,7 +72,7 @@ function RequestDetailPage() {
         )}
         {request && (
           <>
-            <section className="card d-flex flex-row gap-5 p-4 w-100 bg-body-tertiary">
+            <section className="d-flex flex-row gap-5 p-4 w-100 bg-body-tertiary rounded-3">
               <dl className="">
                 <dt>Description</dt>
                 <dd>{request.description}</dd>
@@ -76,31 +83,31 @@ function RequestDetailPage() {
                 <dt>Delivery Mode</dt>
                 <dd>{request.deliveryMode}</dd>
                 <dt>Status</dt>
-                <dd>{request.status}</dd>
+                <dd className="badge text-bg-primary">{request.status}</dd>
               </dl>
               <dl>
-                <dt>Rating</dt>
-                <dd>{request.rating}</dd>
-                <dt>Budget</dt>
+                <dt>Requested By</dt>
                 <dd>
-                  ${request.budgetInMillions} {request.budgetInMillions && "million"}{" "}
+                  {request.user?.firstname} {request.user?.lastname}
                 </dd>
               </dl>
             </section>
-            <section className="card p-4 mt-4 w-100">
-              <header className="d-flex justify-content-between">
-                <h5>Cast</h5>
 
-                <Link className="btn btn-outline-primary" to={`/requests/detail/${request.id}/credit/create`}>
-                  + add credit
+            {/* <section className="card p-4 mt-4 w-100">
+              <header className="d-flex justify-content-between">
+                <h5>Items</h5>
+
+                <Link className="btn btn-outline-primary" to={`/requests/detail/${request.id}/request/create`}>
+                  + add line
                 </Link>
               </header>
-              <CreditTable request={request} onRemove={removeCredit} />
+              <RequestTable request={request} onRemove={removeRequest} />
               <Routes>
-                <Route path="credit/create" element={<CreditCreatePage />} />
-                <Route path="credit/edit/:creditId" element={<CreditEditPage />} />
+                <Route path="request/create" element={<RequestCreatePage />} />
+                <Route path="request/edit/:requestId" element={<RequestEditPage />} />
+                <Route path="request/detail/:requestId" element={<RequestDetailPage />} />
               </Routes>
-            </section>
+            </section> */}
           </>
         )}
       </>

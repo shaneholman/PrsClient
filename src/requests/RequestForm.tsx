@@ -104,7 +104,7 @@ function RequestForm() {
           <select
             id="status"
             className={`form-select ${errors.status && "is-invalid"}`}
-            {...register("deliveryMode", { required: "Delivery type is required" })}
+            {...register("status", { required: "Status type is required" })}
           >
             <option value="">Select...</option>
             <option value="NEW">New</option>
@@ -112,7 +112,7 @@ function RequestForm() {
             <option value="APPROVED">Approved</option>
             <option value="REJECTED">Rejected</option>
           </select>
-          <div className="invalid-feedback">{errors?.deliveryMode?.message}</div>
+          <div className="invalid-feedback">{errors?.status?.message}</div>
         </div>
         <div>
           <label className="form-label" htmlFor="user">
@@ -126,7 +126,7 @@ function RequestForm() {
             <option value="">Select...</option>
             {users.map((user) => (
               <option key={user.id} value={user.id}>
-                {user.firstname} " " {user.lastname}
+                {user.firstname}  {user.lastname}
               </option>
             ))}
           </select>

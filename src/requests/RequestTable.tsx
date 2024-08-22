@@ -57,7 +57,7 @@ function RequestTable() {
           </div>
         </section>
       )}
-      <div className="">
+      
       <table className="table table-hover w-75 ">
         <thead>
           <tr>
@@ -76,7 +76,7 @@ function RequestTable() {
           ))}
         </tbody>
       </table>
-      </div>
+      
     </>
   );
 }
