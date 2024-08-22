@@ -38,17 +38,18 @@ function RequestTable() {
 
   return (
     <>
-      <div className="d-flex flex-column mb-4 w-25">
+      {/* <div className="d-flex flex-column mb-4 w-25">
         <label htmlFor="status" className="form-label">
           Status
         </label>
         <select id="status" className="form-select">
-          <option value="">All</option>
+        <option value="">Select...</option>
+          <option value="ALL">All</option>
           <option value="NEW">New</option>
           <option value="REVIEW">Pending Review</option>
           <option value="APPROVED">Approved</option>
         </select>
-      </div>
+      </div> */}
       {busy && (
         <section className="d-flex justify-content-center align-items-center align-content-center vh-100">
           <div className=" spinner-border text-primary" role="status">
@@ -56,14 +57,15 @@ function RequestTable() {
           </div>
         </section>
       )}
-      <table className="table table-hover w-75 table rounded-4">
+      <div>
+      <table className="table table-hover w-75 ">
         <thead>
           <tr>
             <th>#</th>
             <th>Description</th>
-            <th>Requested By</th>
             <th>Status</th>
             <th>Total</th>
+            <th>Requested By</th>
           
           </tr>
         </thead>
@@ -73,6 +75,7 @@ function RequestTable() {
           ))}
         </tbody>
       </table>
+      </div>
     </>
   );
 }

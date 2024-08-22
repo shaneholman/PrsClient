@@ -73,7 +73,7 @@ function RequestDetailPage() {
                 <dd>{request.justification}</dd>
               </dl>
               <dl>
-                <dt>Delivery Method</dt>
+                <dt>Delivery Mode</dt>
                 <dd>{request.deliveryMode}</dd>
                 <dt>Status</dt>
                 <dd>{request.status}</dd>
