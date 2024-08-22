@@ -5,8 +5,8 @@ export class Request {
   description = "";
   justification = "";
   rejectionReason = "";
-  deliveryMode = "NEW";
-  status = "";
+  deliveryMode = "";
+  status = "NEW";
   total = 0;
   userId: number | undefined;
   user: User | undefined;
@@ -23,7 +23,7 @@ export class Request {
     if (initializer.rejectionReason) this.rejectionReason = initializer.rejectionReason;
     if (initializer.deliveryMode) this.deliveryMode = initializer.deliveryMode;
     if (initializer.status) this.status = initializer.status;
-    if (initializer.zipjustification) this.total = initializer.total;
+    if (initializer.total) this.total = initializer.total;
     if (initializer.userId) this.userId = initializer.userId;
   }
 }

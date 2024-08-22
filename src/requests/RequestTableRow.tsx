@@ -13,24 +13,23 @@ function RequestTableRow({ request, onRemove }: RequestTableRowProps) {
       <td>
         <Link to={`/requests/detail/${request.id}`}>{request.id}</Link>
       </td>
-      {/* <td>
-        {request.justification} ({request.rejectionReason})
-      </td> */}
-      <td >{request.description} <br/>{request.justification}
-      </td>
-      <td className="badge text-bg-primary">{request.deliveryMode}</td>
-      {/* <td>{request.status}</td> */}
-       <td> ${request.total}</td>
-        <td>{request.user?.firstname} {request.user?.lastname}</td>
-        <td>
-      </td>
+
       <td>
-      
-        <div className=" d-flex gap-2">
+        {request.description} <br />
+        {request.justification}
+      </td>
+      <td className=" badge text-bg-primary">{request.status}</td>
+      <td> ${request.total}</td>
+      <td>
+        {request.user?.firstname} {request.user?.lastname}
+      </td>
+
+      <td>
+        <div className="d-flex gap-2">
           <Link className="btn btn-outline-primary" to={`/requests/edit/${request.id}`}>
             edit
           </Link>
-          
+
           <a
             className="btn btn-outline-secondary"
             onClick={(event: SyntheticEvent) => {
@@ -38,7 +37,7 @@ function RequestTableRow({ request, onRemove }: RequestTableRowProps) {
               onRemove(request);
             }}
           >
-           delete
+            delete
           </a>
         </div>
       </td>
