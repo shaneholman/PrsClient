@@ -97,13 +97,13 @@ function RequestDetailPage() {
             </section>
 
             <section className="card p-4 mt-4 w-100">
-              <header className="d-flex justify-content-between">
-                <h5>Items</h5>
+              <div className="table table-hover">
+                <h4 className="text-secondary">Items</h4>
                 <RequestLinesTable request={request} onRemove={removeRequestLine} />
                 <Link className="btn btn-outline-primary" to={`/requestlines/detail/${requestId}/request/create`}>
                   + Add a line
                 </Link>
-              </header>
+              </div>
             </section>
           </>
         )}

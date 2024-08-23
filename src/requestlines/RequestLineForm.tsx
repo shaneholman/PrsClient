@@ -86,7 +86,7 @@ function RequestLinesForm() {
 
       <div className="d-flex gap-2">
         <button className="btn btn-outline-primary">Save</button>
-        <Link className="btn btn-outline-secondary" to={`/request/detail/${requestId}`}>
+        <Link className="btn btn-outline-secondary" to={`/requests/detail/${requestId}`}>
           Cancel
         </Link>
       </div>
