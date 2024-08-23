@@ -9,7 +9,7 @@ import { productAPI } from "../Products/ProductAPI";
 
 function RequestLinesForm() {
   const navigate = useNavigate();
-  let { requestId: requestIdAsString, lineId: lineIdAsString } = useParams<{ requestId: string; lineId: string }>();
+  let { requestId: requestIdAsString, requestLineId: lineIdAsString } = useParams<{ requestId: string; requestLineId: string }>();
   let requestLineId = Number(lineIdAsString);
   let requestId = Number(requestIdAsString);
   const [products, setProducts] = useState<Product[]>([]);
