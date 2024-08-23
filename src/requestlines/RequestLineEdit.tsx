@@ -1,7 +1,7 @@
 import RequestLineForm from "./RequestLineForm";
 
 
-function RequestEditPage() {
+function RequestLinesEdit() {
   return (
     <>
       <div className="d-flex justify-content-between">
@@ -13,4 +13,4 @@ function RequestEditPage() {
   );
 }
 
-export default RequestEditPage;
+export default RequestLinesEdit;

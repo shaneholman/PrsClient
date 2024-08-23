@@ -23,9 +23,8 @@ function RequestLinesTable({ request, onRemove }: RequestLinesProps) {
       <tbody>
         {request.requestLines?.map((requestline) => (
           <tr key={requestline.id}>
-            
             <td>{requestline.product?.name}</td>
-            
+
             <td>{requestline.product?.price}</td>
             <td>{requestline.quantity}</td>
             <td>${(requestline.product?.price ?? 0) * (requestline.quantity ?? 0)}</td>
@@ -34,18 +33,16 @@ function RequestLinesTable({ request, onRemove }: RequestLinesProps) {
 
               <a
                 className="btn btn-danger"
-                
                 onClick={(event: SyntheticEvent) => {
                   event.preventDefault();
                   onRemove(requestline);
                 }}
-              >delete</a>
-               <Link to = ""
-                className="btn btn-outline-secondary"
-                
-                
-              >Edit</Link>
-          
+              >
+                delete
+              </a>
+              <Link to={`/requests/detail/${request.id}/requestlines/edit/${requestline.id}`} className="btn btn-outline-secondary">
+                Edit
+              </Link>
             </td>
           </tr>
         ))}

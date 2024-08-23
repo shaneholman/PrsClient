@@ -100,7 +100,7 @@ function RequestDetailPage() {
               <div className="table table-hover">
                 <h4 className="text-secondary">Items</h4>
                 <RequestLinesTable request={request} onRemove={removeRequestLine} />
-                <Link className="btn btn-outline-primary" to={`/requestlines/detail/${requestId}/request/create`}>
+                <Link className="btn btn-outline-primary" to={`/requests/detail/${requestId}/requestlines/create`}>
                   + Add a line
                 </Link>
               </div>
