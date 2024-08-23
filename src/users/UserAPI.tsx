@@ -7,6 +7,9 @@ export const userAPI = {
   list(): Promise<User[]> {
     return fetch(`${url}?_sort=name&_order=asc`).then(delay(600)).then(checkStatus).then(parseJSON);
   },
+  findByAccount(username: string, password: string): Promise<User> {
+    return fetch(`${url}/${username}/${password}`).then(checkStatus).then(parseJSON);
+  },
 
   find(id: number): Promise<User> {
     return fetch(`${url}/${id}`).then(checkStatus).then(parseJSON);
