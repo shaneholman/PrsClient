@@ -6,6 +6,9 @@ import { requestAPI } from "./RequestAPI";
 import RequestTable from "./RequestTable";
 import RequestCreatePage from "./RequestCreatePage";
 import RequestEditPage from "./RequestEditPage";
+import RequestLinesTable from "../requestlines/RequestLinesTable";
+import { RequestLines } from "../requestlines/RequestLines";
+import { requestLinesAPI } from "../requestlines/RequestLinesAPI";
 
 function RequestDetailPage() {
   const { requestId: requestIdAsString } = useParams<{
@@ -33,18 +36,18 @@ function RequestDetailPage() {
     loadRequest();
   }, [searchParams.get("lastUpdated")]);
 
-  // async function removeRequest(request: Request) {
-  //   if (confirm("Are you sure you want to delete this Request?")) {
-  //     if (request.id) {
-  //       await requestAPI.delete(request.id);
-  //       toast.success("Successfully deleted.");
-  //       let updatedRequests = request?.requestId?.filter((c) => c.id !== request.id);
-  //       if (request) {
-  //         setRequest({ ...request, requests: updatedRequests } as Request);
-  //       }
-  //     }
-  //   }
-  // }
+  async function removeRequestLine(requestline: RequestLines) {
+    if (confirm("Are you sure you want to delete this Request?")) {
+      if (requestline.id) {
+        await requestLinesAPI.delete(requestline.id);
+        toast.success("Successfully deleted.");
+        let updatedRequests = request?.requestLines?.filter((c) => c.id !== requestline.id);
+        if (request) {
+          setRequest({ ...request, requestLines: updatedRequests } as Request);
+        }
+      }
+    }
+  }
 
   if (!request) return null;
 
@@ -75,39 +78,33 @@ function RequestDetailPage() {
             <section className="d-flex flex-row gap-5 p-4 w-100 bg-body-tertiary rounded-3">
               <dl className="">
                 <dt>Description</dt>
-                <dd>{request.description}</dd>
+                <dd>{request?.description}</dd>
                 <dt>Justification</dt>
-                <dd>{request.justification}</dd>
+                <dd>{request?.justification}</dd>
               </dl>
               <dl>
                 <dt>Delivery Mode</dt>
-                <dd>{request.deliveryMode}</dd>
+                <dd>{request?.deliveryMode}</dd>
                 <dt>Status</dt>
-                <dd className="badge text-bg-primary">{request.status}</dd>
+                <dd className="badge text-bg-primary">{request?.status}</dd>
               </dl>
               <dl>
                 <dt>Requested By</dt>
                 <dd>
-                  {request.user?.firstname} {request.user?.lastname}
+                  {request?.user?.firstname} {request?.user?.lastname}
                 </dd>
               </dl>
             </section>
 
-            {/* <section className="card p-4 mt-4 w-100">
+            <section className="card p-4 mt-4 w-100">
               <header className="d-flex justify-content-between">
                 <h5>Items</h5>
-
-                <Link className="btn btn-outline-primary" to={`/requests/detail/${request.id}/request/create`}>
-                  + add line
+                <RequestLinesTable request={request} onRemove={removeRequestLine} />
+                <Link className="btn btn-outline-primary" to={`/requestlines/detail/${requestId}/request/create`}>
+                  + Add a line
                 </Link>
               </header>
-              <RequestTable request={request} onRemove={removeRequest} />
-              <Routes>
-                <Route path="request/create" element={<RequestCreatePage />} />
-                <Route path="request/edit/:requestId" element={<RequestEditPage />} />
-                <Route path="request/detail/:requestId" element={<RequestDetailPage />} />
-              </Routes>
-            </section> */}
+            </section>
           </>
         )}
       </>

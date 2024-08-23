@@ -19,7 +19,7 @@ import RequestsPage from "./requests/RequestsPage";
 import RequestCreatePage from "./requests/RequestCreatePage";
 import RequestEditPage from "./requests/RequestEditPage";
 import RequestDetailPage from "./requests/RequestDetailPage";
-
+import RequestLineCreate from "./requestlines/RequestLineCreate";
 
 function App() {
   return (
@@ -58,6 +58,8 @@ function App() {
                 <Route path="requests/detail/:requestId" element={<RequestDetailPage />} />
                 <Route path="requests/create" element={<RequestCreatePage />} />
                 <Route path="requests/edit/:id" element={<RequestEditPage />} />
+                <Route path="/requestlines/detail/:requestId/request/create" element={<RequestLineCreate />} />
+                {/* <Route path="requests/detail/requestId/requestlines/edit" element={<RequestLinesEdit />} /> */}
               </Routes>
             </section>
           </main>

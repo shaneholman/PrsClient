@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { requestAPI } from "./RequestAPI";
 import { Request } from "./Request";
 import toast from "react-hot-toast";
-
 import RequestTableRow from "./RequestTableRow";
 
 function RequestTable() {
@@ -57,7 +56,7 @@ function RequestTable() {
           </div>
         </section>
       )}
-      
+
       <table className="table table-hover w-75 ">
         <thead>
           <tr>
@@ -67,7 +66,6 @@ function RequestTable() {
             <th>Total</th>
             <th>Requested By</th>
             <th></th>
-            
           </tr>
         </thead>
         <tbody>
@@ -76,7 +74,6 @@ function RequestTable() {
           ))}
         </tbody>
       </table>
-      
     </>
   );
 }
