@@ -94,13 +94,13 @@ function RequestDetailPage() {
         <h4>Request</h4>
         <div className=" d-flex gap-3">
           <button className="btn btn-primary" onClick={handleSubmit(review)}>
-            submit for review
+            Submit for Review
           </button>
           <button className="btn btn-primary" onClick={handleSubmit(approve)}>
             Approve
           </button>
           <button className="btn btn-primary" onClick={handleSubmit(reject)}>
-            reject
+            Reject
           </button>
           <Link to={`/requests/edit/${request.id}`} className="btn btn-outline-secondary">
             + Edit Request

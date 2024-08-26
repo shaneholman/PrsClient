@@ -51,8 +51,9 @@ function Header() {
             </li>
             <li>
               <button className="dropdown-item" onClick={signout}>
-                Sign out
+                Sign out /Sign in 
               </button>
+            
             </li>
           </ul>
         </div>

@@ -32,7 +32,7 @@ function RequestLinesTable({ request, onRemove }: RequestLinesProps) {
               <Link to={`/requests/detail/${request.id}/requestlines/edit/${requestline.id}`} className="btn btn-outline-secondary">
                 Edit
               </Link>
-              <Link to={`requestLines/edit/${requestline.id}`}></Link>
+              {/* <Link to={`requestLines/edit/${requestline.id}`}></Link> */}
 
               <a
                 className="btn btn-outline-danger"

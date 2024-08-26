@@ -107,7 +107,7 @@ function UserForm() {
               required: "Password is required",
             })}
             className={`form-control ${errors.password && "is-invalid"} `}
-            type="text"
+            type="password"
           />
           <div className="invalid-feedback">{errors?.password?.message}</div>
         </div>

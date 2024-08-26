@@ -23,8 +23,8 @@ export class RequestLines {
     if (initializer.requestId) this.requestId = initializer.requestId;
     if (initializer.productId) this.productId = initializer.productId;
     if (initializer.quantity) this.quantity = initializer.quantity;
-    if (initializer.request) this.request = initializer.request;
-    if (initializer.product) this.product = initializer.product;
-    if (initializer.user) this.user = initializer.user;
+    // if (initializer.request) this.request = initializer.request;
+    // if (initializer.product) this.product = initializer.product;
+    // if (initializer.user) this.user = initializer.user;
   }
 }

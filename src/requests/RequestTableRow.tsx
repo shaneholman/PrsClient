@@ -18,10 +18,15 @@ function RequestTableRow({ request, onRemove }: RequestTableRowProps) {
         {request.description} <br />
         <span className="text-secondary">{request.justification}</span>
       </td>
-      <td > <span className="badge text-bg-primary mt-2">{request.status} </span></td>
+      <td>
+        {" "}
+        <span className="badge text-bg-primary mt-2">{request.status} </span>
+      </td>
       <td> ${request.total}</td>
       <td>
         {request.user?.firstname} {request.user?.lastname}
+        <br />
+        <span className="text-secondary">{request.deliveryMode}</span>
       </td>
 
       <td>

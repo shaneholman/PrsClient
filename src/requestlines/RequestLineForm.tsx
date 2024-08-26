@@ -9,7 +9,10 @@ import { productAPI } from "../Products/ProductAPI";
 
 function RequestLinesForm() {
   const navigate = useNavigate();
-  let { requestId: requestIdAsString, requestLineId: lineIdAsString } = useParams<{ requestId: string; requestLineId: string }>();
+  let { requestId: requestIdAsString, requestLineId: lineIdAsString } = useParams<{
+    requestId: string;
+    requestLineId: string;
+  }>();
   let requestLineId = Number(lineIdAsString);
   let requestId = Number(requestIdAsString);
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,7 +42,7 @@ function RequestLinesForm() {
       } else {
         await requestLinesAPI.put(requestLines);
       }
-      // navigate(`/request/detail/${requestId}?lastUpdated=${Date.now()}`);
+
       navigate(`/requests/detail/${requestId}`);
     } catch (error: any) {
       toast.error(error.message);
@@ -76,6 +79,7 @@ function RequestLinesForm() {
         <input
           {...register("quantity", {
             required: "Quantity is required",
+            valueAsNumber: true,
           })}
           className="form-control"
           type="number"

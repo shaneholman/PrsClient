@@ -23,7 +23,7 @@ function ProductCard({ product, onRemove }: ProductCardProps) {
       {/* <small>Unit : {product.unit}</small> */}
 
       <small>Vendor Name : {product.vendor?.name}</small>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 mt-3">
         <Link className="small btn btn-outline-secondary" to={`/products/edit/${product.id}`}>
           edit
         </Link>

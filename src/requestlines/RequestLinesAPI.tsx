@@ -3,6 +3,11 @@ import { RequestLines } from "./RequestLines";
 
 const url = `${BASE_URL}/RequestLines`;
 
+function replacer(key: string, value: any) {
+  if (key === "product") return undefined;
+  return value;
+}
+
 export const requestLinesAPI = {
   list(): Promise<RequestLines[]> {
     return fetch(url).then(checkStatus).then(delay(600)).then(parseJSON);
@@ -24,7 +29,7 @@ export const requestLinesAPI = {
   put(requestLine: RequestLines) {
     return fetch(`${url}/${requestLine.id}`, {
       method: "PUT",
-      body: JSON.stringify(requestLine),
+      body: JSON.stringify(requestLine, replacer),
       headers: {
         "Content-Type": "application/json",
       },
